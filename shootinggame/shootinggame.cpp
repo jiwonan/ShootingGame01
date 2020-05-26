@@ -2,8 +2,7 @@
 #include "framework.h"
 #include "shootinggame.h"
 
-#include <windows.h>
-#include <d3d9.h>
+#include "global.h"
 
 #define MAX_LOADSTRING 100
 
@@ -17,8 +16,8 @@ ATOM                MyRegisterClass(HINSTANCE hInstance);
 BOOL                InitInstance(HINSTANCE, int);
 LRESULT CALLBACK    WndProc(HWND, UINT, WPARAM, LPARAM);
 
-LPDIRECT3D9         g_pD3D = NULL;
-LPDIRECT3DDEVICE9   g_pd3dDevice = NULL;
+LPDIRECT3D9 g_pD3D = nullptr;
+LPDIRECT3DDEVICE9 g_pd3dDevice = nullptr;
 
 HRESULT InitD3D(HWND hWnd)
 {
