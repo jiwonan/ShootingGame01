@@ -2,6 +2,8 @@
 #include "framework.h"
 #include "shootinggame.h"
 
+#include <windows.h>
+
 #include "global.h"
 
 #define MAX_LOADSTRING 100
@@ -18,6 +20,9 @@ LRESULT CALLBACK    WndProc(HWND, UINT, WPARAM, LPARAM);
 
 LPDIRECT3D9 g_pD3D = nullptr;
 LPDIRECT3DDEVICE9 g_pd3dDevice = nullptr;
+
+ID3DXSprite* testSprite;
+LPDIRECT3DTEXTURE9 testTexture;
 
 HRESULT InitD3D(HWND hWnd)
 {
@@ -37,18 +42,23 @@ HRESULT InitD3D(HWND hWnd)
         return E_FAIL;
     }
 
-    // Device state would normally be set here
-
     return S_OK;
 }
 
+void InitMyStuff()
+{
+    D3DXCreateSprite(g_pd3dDevice, &testSprite);
 
-VOID EngineUpdate()
+    D3DXCreateTextureFromFile(g_pd3dDevice, L"texture.png", &testTexture);
+}
+
+
+void EngineUpdate()
 {
 
 }
 
-VOID EngineRender()
+void EngineRender()
 {
     if (NULL == g_pd3dDevice)
         return;
@@ -60,6 +70,16 @@ VOID EngineRender()
     if (SUCCEEDED(g_pd3dDevice->BeginScene()))
     {
         // Rendering of scene objects can happen here
+
+        RECT srcRect;
+        srcRect.left = 0;
+        srcRect.top = 0;
+        srcRect.bottom = 512;
+        srcRect.right = 512;
+
+        testSprite->Begin(D3DXSPRITE_ALPHABLEND);
+        testSprite->Draw(testTexture, &srcRect, nullptr, nullptr, D3DCOLOR_XRGB(255, 255, 255));
+        testSprite->End();
 
         // End the scene
         g_pd3dDevice->EndScene();
@@ -145,6 +165,7 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
    }
 
    InitD3D(hWnd);
+   InitMyStuff();
 
    ShowWindow(hWnd, nCmdShow);
    UpdateWindow(hWnd);
