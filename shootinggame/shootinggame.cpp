@@ -59,7 +59,7 @@ int spriteY = 0;
 
 void EngineUpdate()
 {
-    if (inputManager.keyBuffer[VK_RIGHT] == 1)
+    /*if (inputManager.keyBuffer[VK_RIGHT] == 1)
         spriteX += 1;
     if (inputManager.keyBuffer[VK_LEFT] == 1)
         spriteX -= 1;
@@ -67,6 +67,12 @@ void EngineUpdate()
         spriteY += 1;
     if (inputManager.keyBuffer[VK_UP] == 1)
         spriteY -= 1;
+        */
+    if (inputManager.prevKeyBuffer[VK_LEFT] == 1 &&
+        inputManager.keyBuffer[VK_LEFT] == 0)
+        spriteX -= 10;
+
+    inputManager.Update();
 }
 
 void EngineRender()
