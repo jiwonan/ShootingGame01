@@ -34,9 +34,12 @@ HRESULT InitD3D(HWND hWnd)
 
     D3DPRESENT_PARAMETERS d3dpp;
     ZeroMemory(&d3dpp, sizeof(d3dpp));
-    d3dpp.Windowed = TRUE;
+    d3dpp.Windowed = false;
     d3dpp.SwapEffect = D3DSWAPEFFECT_DISCARD;
-    d3dpp.BackBufferFormat = D3DFMT_UNKNOWN;
+
+    d3dpp.BackBufferWidth = WINDOW_WIDTH;
+    d3dpp.BackBufferHeight = WINDOW_HEIGHT;
+    d3dpp.BackBufferFormat = D3DFMT_A8R8G8B8;
 
     if (FAILED(g_pD3D->CreateDevice(D3DADAPTER_DEFAULT, D3DDEVTYPE_HAL, hWnd,
         D3DCREATE_SOFTWARE_VERTEXPROCESSING,
@@ -131,8 +134,6 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
         return FALSE;
     }
 
-    HACCEL hAccelTable = LoadAccelerators(hInstance, MAKEINTRESOURCE(IDC_SHOOTINGGAME));
-
     MSG msg;
             ZeroMemory( &msg, sizeof( msg ) );
             while( msg.message != WM_QUIT )
@@ -177,7 +178,7 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
    hInst = hInstance; // 인스턴스 핸들을 전역 변수에 저장합니다.
 
    HWND hWnd = CreateWindowW(szWindowClass, szTitle, WS_OVERLAPPEDWINDOW,
-      CW_USEDEFAULT, 0, CW_USEDEFAULT, 0, nullptr, nullptr, hInstance, nullptr);
+      CW_USEDEFAULT, 0, WINDOW_WIDTH, WINDOW_HEIGHT, nullptr, nullptr, hInstance, nullptr);
 
    if (!hWnd)
    {
