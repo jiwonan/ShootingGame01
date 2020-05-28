@@ -25,6 +25,7 @@ LPDIRECT3DDEVICE9 g_pd3dDevice = nullptr;
 // LPDIRECT3DTEXTURE9 testTexture;
 
 TextureManager textureManager;
+InputManager inputManager;
 
 HRESULT InitD3D(HWND hWnd)
 {
@@ -52,10 +53,16 @@ void InitMyStuff()
     textureManager.LoadTexture(L"texture.png", 1);
 }
 
+int spriteX = 0;
+int spriteY = 0;
+
 
 void EngineUpdate()
 {
-
+    if (inputManager.keyBuffer[VK_RIGHT] == 1)
+        spriteX += 1;
+    if (inputManager.keyBuffer[VK_LEFT] == 1)
+        spriteX -= 1;
 }
 
 void EngineRender()
@@ -79,7 +86,9 @@ void EngineRender()
         srcRect.bottom = 512;
         srcRect.right = 512;
 
-        element->sprite->Draw(element->texture, &srcRect, nullptr, nullptr, D3DCOLOR_XRGB(255, 255, 255));
+        D3DXVECTOR3 pos(spriteX, spriteY, 0);
+
+        element->sprite->Draw(element->texture, &srcRect, nullptr, &pos, D3DCOLOR_XRGB(255, 255, 255));
         element->sprite->End();
 
         // End the scene
@@ -185,6 +194,12 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             // TODO: 여기에 hdc를 사용하는 그리기 코드를 추가합니다...
             EndPaint(hWnd, &ps);
         }
+        break;
+    case WM_KEYDOWN:
+        inputManager.keyBuffer[wParam] = 1;
+        break;
+    case WM_KEYUP:
+        inputManager.keyBuffer[wParam] = 0;
         break;
     case WM_DESTROY:
         PostQuitMessage(0);
