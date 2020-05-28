@@ -21,8 +21,10 @@ LRESULT CALLBACK    WndProc(HWND, UINT, WPARAM, LPARAM);
 LPDIRECT3D9 g_pD3D = nullptr;
 LPDIRECT3DDEVICE9 g_pd3dDevice = nullptr;
 
-ID3DXSprite* testSprite;
-LPDIRECT3DTEXTURE9 testTexture;
+// ID3DXSprite* testSprite;
+// LPDIRECT3DTEXTURE9 testTexture;
+
+TextureManager textureManager;
 
 HRESULT InitD3D(HWND hWnd)
 {
@@ -47,9 +49,7 @@ HRESULT InitD3D(HWND hWnd)
 
 void InitMyStuff()
 {
-    D3DXCreateSprite(g_pd3dDevice, &testSprite);
-
-    D3DXCreateTextureFromFile(g_pd3dDevice, L"texture.png", &testTexture);
+    textureManager.LoadTexture(L"texture.png", 1);
 }
 
 
@@ -70,6 +70,8 @@ void EngineRender()
     if (SUCCEEDED(g_pd3dDevice->BeginScene()))
     {
         // Rendering of scene objects can happen here
+        TextureElement* element = textureManager.GetTexture(1);
+        element->sprite->Begin(D3DXSPRITE_ALPHABLEND);
 
         RECT srcRect;
         srcRect.left = 0;
@@ -77,9 +79,8 @@ void EngineRender()
         srcRect.bottom = 512;
         srcRect.right = 512;
 
-        testSprite->Begin(D3DXSPRITE_ALPHABLEND);
-        testSprite->Draw(testTexture, &srcRect, nullptr, nullptr, D3DCOLOR_XRGB(255, 255, 255));
-        testSprite->End();
+        element->sprite->Draw(element->texture, &srcRect, nullptr, nullptr, D3DCOLOR_XRGB(255, 255, 255));
+        element->sprite->End();
 
         // End the scene
         g_pd3dDevice->EndScene();
