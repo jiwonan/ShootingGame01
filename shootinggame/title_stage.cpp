@@ -13,7 +13,7 @@ void TitleStage::Update()
         inputManager.prevKeyBuffer[VK_LBUTTON] == 1)
     {
         // game start
-        stageManager.MakeGameFirstStage();
+        stageManager.MakeGameStage();
     }
 
 }

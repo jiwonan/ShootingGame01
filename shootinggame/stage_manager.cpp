@@ -14,7 +14,7 @@ void StageManager::MakeTitleStage()
 	currentStage = stage;
 }
 
-void StageManager::MakeGameFirstStage()
+void StageManager::MakeGameStage()
 {
 	if (currentStage != nullptr)
 	{

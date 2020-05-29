@@ -11,5 +11,5 @@ public:
 	void Render();
 
 	void MakeTitleStage();
-	void MakeGameFirstStage();
+	void MakeGameStage();
 };
