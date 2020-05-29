@@ -156,13 +156,18 @@
     <ClInclude Include="math_util.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="shootinggame.h" />
+    <ClInclude Include="stage.h" />
+    <ClInclude Include="stage_manager.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="texture_manager.h" />
+    <ClInclude Include="title_stage.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="math_util.cpp" />
     <ClCompile Include="shootinggame.cpp" />
+    <ClCompile Include="stage_manager.cpp" />
     <ClCompile Include="texture_manager.cpp" />
+    <ClCompile Include="title_stage.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="shootinggame.rc" />

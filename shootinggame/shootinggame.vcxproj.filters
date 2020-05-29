@@ -39,6 +39,15 @@
     <ClInclude Include="math_util.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="stage_manager.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="stage.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="title_stage.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="shootinggame.cpp">
@@ -48,6 +57,12 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="math_util.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="stage_manager.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="title_stage.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>

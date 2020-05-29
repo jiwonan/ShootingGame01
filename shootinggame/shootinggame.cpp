@@ -26,6 +26,7 @@ LPDIRECT3DDEVICE9 g_pd3dDevice = nullptr;
 
 TextureManager textureManager;
 InputManager inputManager;
+StageManager stageManager;
 
 HRESULT InitD3D(HWND hWnd)
 {
@@ -34,12 +35,15 @@ HRESULT InitD3D(HWND hWnd)
 
     D3DPRESENT_PARAMETERS d3dpp;
     ZeroMemory(&d3dpp, sizeof(d3dpp));
-    d3dpp.Windowed = false;
+    d3dpp.Windowed = TRUE;
+    // d3dpp.Windowed = false;
+
     d3dpp.SwapEffect = D3DSWAPEFFECT_DISCARD;
 
-    d3dpp.BackBufferWidth = WINDOW_WIDTH;
-    d3dpp.BackBufferHeight = WINDOW_HEIGHT;
-    d3dpp.BackBufferFormat = D3DFMT_A8R8G8B8;
+    d3dpp.BackBufferFormat = D3DFMT_UNKNOWN;
+    // d3dpp.BackBufferWidth = WINDOW_WIDTH;
+    // d3dpp.BackBufferHeight = WINDOW_HEIGHT;
+    // d3dpp.BackBufferFormat = D3DFMT_A8R8G8B8;
 
     if (FAILED(g_pD3D->CreateDevice(D3DADAPTER_DEFAULT, D3DDEVTYPE_HAL, hWnd,
         D3DCREATE_SOFTWARE_VERTEXPROCESSING,
@@ -53,6 +57,8 @@ HRESULT InitD3D(HWND hWnd)
 
 void InitMyStuff()
 {
+    stageManager.MakeTitleStage();
+
     textureManager.LoadTexture(L"texture.png", 1);
 }
 
@@ -62,6 +68,9 @@ int spriteY = 0;
 
 void EngineUpdate()
 {
+
+    stageManager.Update();
+
     /*if (inputManager.keyBuffer[VK_RIGHT] == 1)
         spriteX += 1;
     if (inputManager.keyBuffer[VK_LEFT] == 1)
@@ -89,6 +98,9 @@ void EngineRender()
     // Begin the scene
     if (SUCCEEDED(g_pd3dDevice->BeginScene()))
     {
+        stageManager.Render();
+
+        /*
         // Rendering of scene objects can happen here
         TextureElement* element = textureManager.GetTexture(1);
         element->sprite->Begin(D3DXSPRITE_ALPHABLEND);
@@ -103,7 +115,7 @@ void EngineRender()
 
         element->sprite->Draw(element->texture, &srcRect, nullptr, &pos, D3DCOLOR_XRGB(255, 255, 255));
         element->sprite->End();
-
+        */
         // End the scene
         g_pd3dDevice->EndScene();
     }
