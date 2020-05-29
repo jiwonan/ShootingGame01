@@ -150,6 +150,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="game_background.h" />
     <ClInclude Include="game_first_stage.h" />
     <ClInclude Include="input_manager.h" />
     <ClInclude Include="framework.h" />
@@ -164,6 +165,7 @@
     <ClInclude Include="title_stage.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="game_background.cpp" />
     <ClCompile Include="game_first_stage.cpp" />
     <ClCompile Include="math_util.cpp" />
     <ClCompile Include="shootinggame.cpp" />
