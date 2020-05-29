@@ -57,9 +57,10 @@ HRESULT InitD3D(HWND hWnd)
 
 void InitMyStuff()
 {
-    stageManager.MakeTitleStage();
-
     textureManager.LoadTexture(L"texture.png", 1);
+    textureManager.LoadTexture(L"title.png", TEX_TITLE_SCREEN);
+
+    stageManager.MakeTitleStage();
 }
 
 int spriteX = 0;
