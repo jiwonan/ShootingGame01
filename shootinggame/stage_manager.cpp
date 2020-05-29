@@ -1,5 +1,6 @@
 #include "stage_manager.h"
 #include "title_stage.h"
+#include "game_first_stage.h"
 
 void StageManager::MakeTitleStage()
 {
@@ -10,6 +11,17 @@ void StageManager::MakeTitleStage()
 	}
 
 	TitleStage* stage = new TitleStage();
+	currentStage = stage;
+}
+
+void StageManager::MakeGameFirstStage()
+{
+	if (currentStage != nullptr)
+	{
+		delete currentStage;
+	}
+
+	GameFirstStage* stage = new GameFirstStage;
 	currentStage = stage;
 }
 

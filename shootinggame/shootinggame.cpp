@@ -59,6 +59,7 @@ void InitMyStuff()
 {
     textureManager.LoadTexture(L"texture.png", 1);
     textureManager.LoadTexture(L"title.png", TEX_TITLE_SCREEN);
+    textureManager.LoadTexture(L"background.png", GAME_BACKGROUND);
 
     stageManager.MakeTitleStage();
 }

@@ -48,6 +48,9 @@
     <ClInclude Include="title_stage.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="game_first_stage.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="shootinggame.cpp">
@@ -63,6 +66,9 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="title_stage.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="game_first_stage.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>

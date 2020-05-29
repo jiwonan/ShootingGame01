@@ -11,6 +11,8 @@
 
 #define TEX_TITLE_SCREEN 1000
 
+#define GAME_BACKGROUND 2000
+
 extern LPDIRECT3D9 g_pD3D;
 extern LPDIRECT3DDEVICE9 g_pd3dDevice;
 

@@ -9,6 +9,13 @@ TitleStage::TitleStage()
 void TitleStage::Update()
 {
 
+    if (inputManager.keyBuffer[VK_LBUTTON] == 0 &&
+        inputManager.prevKeyBuffer[VK_LBUTTON] == 1)
+    {
+        // game start
+        stageManager.MakeGameFirstStage();
+    }
+
 }
 
 void TitleStage::Render()
