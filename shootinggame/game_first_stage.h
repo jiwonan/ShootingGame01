@@ -2,6 +2,7 @@
 
 #include "stage.h"
 #include "game_background.h"
+#include "Player.h"
 
 class GameFirstStage : public Stage
 {
@@ -11,4 +12,5 @@ public:
 	void Render() override;
 
 	GameBackground background;
+	Player player;
 };
