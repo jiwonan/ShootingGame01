@@ -27,6 +27,7 @@ LPDIRECT3DDEVICE9 g_pd3dDevice = nullptr;
 TextureManager textureManager;
 InputManager inputManager;
 StageManager stageManager;
+GameSystem gameSystem;
 
 HRESULT InitD3D(HWND hWnd)
 {
@@ -61,32 +62,15 @@ void InitMyStuff()
     textureManager.LoadTexture(L"title.png", TEX_TITLE_SCREEN);
     textureManager.LoadTexture(L"background.png", GAME_BACKGROUND);
     textureManager.LoadTexture(L"player1.png", GAME_PLAYER_BODY);
+    textureManager.LoadTexture(L"player_bullet_1.png", GAME_PLAYER_BULLET_1);
 
     stageManager.MakeTitleStage();
 }
-
-int spriteX = 0;
-int spriteY = 0;
-
 
 void EngineUpdate()
 {
 
     stageManager.Update();
-
-    /*if (inputManager.keyBuffer[VK_RIGHT] == 1)
-        spriteX += 1;
-    if (inputManager.keyBuffer[VK_LEFT] == 1)
-        spriteX -= 1;
-    if (inputManager.keyBuffer[VK_DOWN] == 1)
-        spriteY += 1;
-    if (inputManager.keyBuffer[VK_UP] == 1)
-        spriteY -= 1;
-        */
-    if (inputManager.prevKeyBuffer[VK_LEFT] == 1 &&
-        inputManager.keyBuffer[VK_LEFT] == 0)
-        spriteX -= 10;
-
     inputManager.Update();
 }
 

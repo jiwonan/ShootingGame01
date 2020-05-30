@@ -7,7 +7,7 @@ public:
 	void Update();
 	void Render();
 
-	float PlayerX;
-	float PlayerY;
+	float playerX;
+	float playerY;
 	float speed;
 };
