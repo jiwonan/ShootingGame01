@@ -3,19 +3,33 @@
 
 void GameSystem::GeneratePlayerBulletSpread(int x, int y)
 {
-	float vx = 0;
-	float vy = -10.0f;
+	float speed = 8;
 
-	PlayerBulletSpread* newBullet = new PlayerBulletSpread(x, y, vx, vy);
-	bullets.push_back(newBullet);
+	int n = 5;
+	for (int i = 0; i < 5; ++i)
+	{
+		float deltaAngle = (i * 8 + 70) * 3.141592f / 180.0f;
+
+		float vx = cos(deltaAngle) * speed;
+		float vy = -sin(deltaAngle) * speed;
+		PlayerBulletSpread* newBullet = new PlayerBulletSpread(x, y, vx, vy);
+		bullets.push_back(newBullet);
+	}
 }
 
 void GameSystem::Update()
 {
-	int a = 10;
-	for (int i = 0; i < bullets.size(); ++i)
+	for (auto iter = bullets.begin(); iter != bullets.end(); )
 	{
-		bullets[i]->Update();
+		(*iter)->Update();
+		if ((*iter)->IsDead())
+		{
+			iter = bullets.erase(iter);
+		}
+		else
+		{
+			iter++;
+		}
 	}
 }
 void GameSystem::Render()

@@ -9,10 +9,12 @@ public:
 
 	void Update() override;
 	void Render() override;
+	bool IsDead() override;
 
 	float posX;
 	float posY;
 
 	float velX;
 	float velY;
+	bool isDead;
 };

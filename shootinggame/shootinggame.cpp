@@ -24,10 +24,14 @@ LPDIRECT3DDEVICE9 g_pd3dDevice = nullptr;
 // ID3DXSprite* testSprite;
 // LPDIRECT3DTEXTURE9 testTexture;
 
+float deltaTime = 0.3f;
+
 TextureManager textureManager;
 InputManager inputManager;
 StageManager stageManager;
 GameSystem gameSystem;
+
+DWORD prevTime;
 
 HRESULT InitD3D(HWND hWnd)
 {
@@ -65,10 +69,22 @@ void InitMyStuff()
     textureManager.LoadTexture(L"player_bullet_1.png", GAME_PLAYER_BULLET_1);
 
     stageManager.MakeTitleStage();
+
+    prevTime = GetTickCount();
 }
 
 void EngineUpdate()
 {
+    DWORD cur = GetTickCount();
+    DWORD diff = cur - prevTime;
+    deltaTime = diff / (1000.0);
+
+    if (deltaTime > 0.016)
+    {
+        deltaTime = 0.016f;
+    }
+
+    prevTime = cur;
 
     stageManager.Update();
     inputManager.Update();

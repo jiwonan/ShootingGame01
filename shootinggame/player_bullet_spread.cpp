@@ -7,12 +7,20 @@ PlayerBulletSpread::PlayerBulletSpread(int x, int y, float vx, float vy)
 	posY = y;
 	velX = vx;
 	velY = vy;
+
+    isDead = false;
 }
 
 void PlayerBulletSpread::Update()
 {
 	posX += velX;
 	posY += velY;
+
+    if (posX<0 || posX>WINDOW_WIDTH ||
+        posY<0 || posY>WINDOW_HEIGHT)
+    {
+        isDead = true;
+    }
 }
 
 void PlayerBulletSpread::Render()
@@ -32,4 +40,9 @@ void PlayerBulletSpread::Render()
     bullet->sprite->Draw(bullet->texture, &srcRect, nullptr, &pos, D3DCOLOR_XRGB(255, 255, 255));
 
     bullet->sprite->End();
+}
+
+bool PlayerBulletSpread::IsDead()
+{
+    return isDead;
 }
