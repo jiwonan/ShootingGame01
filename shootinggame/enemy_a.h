@@ -21,7 +21,7 @@ public:
 	bool IsDead() override;
 	float GetRadius() override;
 	D3DXVECTOR2 GetPosition() override;
-	bool Hit(float damage) override;
+	void Hit(float damage) override;
 
 	void UpdateMoveToPoint();
 	void UpdateChooseDirection();

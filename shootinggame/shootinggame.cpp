@@ -70,6 +70,7 @@ void InitMyStuff()
     textureManager.LoadTexture(L"player_bullet_1.png", GAME_PLAYER_BULLET_1);
 
     textureManager.LoadTexture(L"enemy_a.png", 2003);
+    textureManager.LoadTexture(L"explosion.png", 2005);
 
 
     stageManager.MakeTitleStage();

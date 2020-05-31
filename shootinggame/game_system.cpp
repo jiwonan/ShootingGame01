@@ -4,6 +4,8 @@
 #include "global.h"
 #include "math_util.h"
 #include "Player.h"
+#include "enemy_explosion_a.h"
+
 
 GameSystem::GameSystem()
 {
@@ -14,6 +16,7 @@ void GameSystem::ClearAll()
 {
 	bullets.clear();
 	enemies.clear();
+	effects.clear();
 }
 
 void GameSystem::GeneratePlayerBulletSpread(int x, int y)
@@ -36,6 +39,12 @@ void GameSystem::GenerateEnemyA()
 {
 	Enemy* enemyA = new EnemyA();
 	enemies.push_back(enemyA);
+}
+
+void GameSystem::GenerateEnemyExplosionA(float x, float y)
+{
+	EnemyExplosionA* newEffect = new EnemyExplosionA(x, y);
+	effects.push_back(newEffect);
 }
 
 void GameSystem::Update()
@@ -134,7 +143,19 @@ void GameSystem::Update()
 		iter++;
 	}
 
+	for (auto iter = effects.begin(); iter != effects.end(); )
+	{
+		(*iter)->Update();
 
+		if ((*iter)->IsDead())
+		{
+			iter = effects.erase(iter);
+		}
+		else
+		{
+			iter++;
+		}
+	}
 }
 void GameSystem::Render()
 {
@@ -146,5 +167,9 @@ void GameSystem::Render()
 	for (int i = 0; i < enemies.size(); ++i)
 	{
 		enemies[i]->Render();
+	}
+	for (int i = 0; i < effects.size(); ++i)
+	{
+		effects[i]->Render();
 	}
 }

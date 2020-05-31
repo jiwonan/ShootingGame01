@@ -86,7 +86,7 @@ D3DXVECTOR2 EnemyA::GetPosition()
 	return D3DXVECTOR2(posX, posY);
 }
 
-bool EnemyA::Hit(float damage)
+void EnemyA::Hit(float damage)
 {
 	if (!isDead)
 	{
@@ -96,8 +96,8 @@ bool EnemyA::Hit(float damage)
 		if (hp <= 0)
 		{
 			isDead = true;
+			gameSystem.GenerateEnemyExplosionA(posX, posY);
 		}
-		return isDead;
 	}
 }
 

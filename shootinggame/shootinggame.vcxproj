@@ -150,9 +150,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="animation_frame.h" />
     <ClInclude Include="Bullet.h" />
     <ClInclude Include="enemy.h" />
     <ClInclude Include="enemy_a.h" />
+    <ClInclude Include="enemy_explosion_a.h" />
     <ClInclude Include="game_background.h" />
     <ClInclude Include="game_first_stage.h" />
     <ClInclude Include="input_manager.h" />
@@ -164,6 +166,7 @@
     <ClInclude Include="player_bullet_spread.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="shootinggame.h" />
+    <ClInclude Include="sprite_effect.h" />
     <ClInclude Include="stage.h" />
     <ClInclude Include="stage_manager.h" />
     <ClInclude Include="targetver.h" />
@@ -172,6 +175,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="enemy_a.cpp" />
+    <ClCompile Include="enemy_explosion_a.cpp" />
     <ClCompile Include="game_background.cpp" />
     <ClCompile Include="game_first_stage.cpp" />
     <ClCompile Include="game_system.cpp" />
