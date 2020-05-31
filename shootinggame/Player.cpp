@@ -5,7 +5,10 @@ Player::Player()
 {
     playerX = WINDOW_WIDTH / 2;
     playerY = WINDOW_HEIGHT * 0.8f;
-    speed = 200;
+    speed = 300;
+
+    hp = 3;
+    enableInvincible = false;
 }
 
 void Player::Update()
@@ -55,7 +58,52 @@ void Player::Render()
     srcRect.right = 31;
 
     D3DXVECTOR3 pos(playerX - 16, playerY - 24, 0);
-    player->sprite->Draw(player->texture, &srcRect, nullptr, &pos, D3DCOLOR_XRGB(255, 255, 255));
 
+    if (enableInvincible)
+    {
+        invincibleTime -= deltaTime;
+
+        if (invincibleTime < 0)
+        {
+            enableInvincible = false;
+        }
+        else
+        {
+            if (((int)(invincibleTime * 10)) % 2== 0)
+            {
+                player->sprite->Draw(player->texture, &srcRect, nullptr, &pos, D3DCOLOR_XRGB(255, 255, 255));
+            }
+        }
+    }
+    else
+    {
+        player->sprite->Draw(player->texture, &srcRect, nullptr, &pos, D3DCOLOR_XRGB(255, 255, 255));
+    }
     player->sprite->End();
+}
+
+
+D3DXVECTOR2 Player::GetPosition()
+{
+    return D3DXVECTOR2(playerX,playerY);
+}
+
+float Player::GetRadius()
+{
+    return 16.0f;
+}
+
+void Player::HitByEnemyBody()
+{
+    hp--;
+    if (hp > 0)
+    {
+        enableInvincible = true;
+        invincibleTime = 3;
+    }
+    else
+    {
+        hp = 0;
+        stageManager.MakeTitleStage();
+    }
 }

@@ -4,7 +4,9 @@
 
 GameFirstStage::GameFirstStage()
 {
-    
+    gameSystem.player = &player;
+
+    gameSystem.ClearAll();
 }
 void GameFirstStage::Update()
 {

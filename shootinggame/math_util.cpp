@@ -10,6 +10,7 @@ bool isCircleCollided(float ax, float ay, float ar,
 	const float d = sqrt(dx * dx + dy * dy);
 
 	if (ar + br < d)
-		return true;
-	return false;
+		return false;
+
+	return true;
 }

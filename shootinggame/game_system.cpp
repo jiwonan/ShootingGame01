@@ -2,6 +2,19 @@
 #include "player_bullet_spread.h"
 #include "enemy_a.h"
 #include "global.h"
+#include "math_util.h"
+#include "Player.h"
+
+GameSystem::GameSystem()
+{
+
+}
+
+void GameSystem::ClearAll()
+{
+	bullets.clear();
+	enemies.clear();
+}
 
 void GameSystem::GeneratePlayerBulletSpread(int x, int y)
 {
@@ -38,7 +51,7 @@ void GameSystem::Update()
 		}
 	}
 
-	// 적 총알 업데이트
+	// 총알 업데이트
 	for (auto iter = bullets.begin(); iter != bullets.end(); )
 	{
 		(*iter)->Update();
@@ -65,6 +78,62 @@ void GameSystem::Update()
 			iter++;
 		}
 	}
+	
+	// 적과 플레이어 총알 충돌 체크
+	for (auto iter = bullets.begin(); iter != bullets.end(); )
+	{
+		for (int enemyIndex = 0; enemyIndex < enemies.size(); enemyIndex++)
+		{
+			Enemy* currentEnemy = enemies[enemyIndex];
+			if (!currentEnemy->IsDead())
+			{
+				D3DXVECTOR2 enemyPos = currentEnemy->GetPosition();
+				float enemyR = currentEnemy->GetRadius();
+
+				D3DXVECTOR2 bulletPos = (*iter)->GetPosition();
+				float bulletR = (*iter)->GetRadius();
+
+				bool Result = isCircleCollided(bulletPos.x, bulletPos.y, bulletR,
+					enemyPos.x, enemyPos.y, enemyR);
+
+				if (Result)
+				{
+					(*iter)->Hit();
+					currentEnemy->Hit(1);
+					break;
+				}
+			}
+		}
+		iter++;
+	}
+	
+	// 적 비행기와 플레이어 충돌 체크
+	for (auto iter = enemies.begin(); iter != enemies.end(); )
+	{
+		Enemy* currentEnemy = (*iter);
+
+		if (!currentEnemy->IsDead() && !player->enableInvincible)
+		{
+			D3DXVECTOR2 playerPos = player->GetPosition();
+			float playerR = player->GetRadius();
+
+			D3DXVECTOR2 enemyPos = currentEnemy->GetPosition();
+			float enemyR = currentEnemy->GetRadius();
+
+			bool Result = isCircleCollided(playerPos.x, playerPos.y,playerR,
+				enemyPos.x, enemyPos.y, enemyR);
+
+			if (Result)
+			{
+				player->HitByEnemyBody();
+				currentEnemy->Hit(9999);
+				break;
+			}
+		}
+
+		iter++;
+	}
+
 
 }
 void GameSystem::Render()

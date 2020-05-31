@@ -10,6 +10,9 @@ public:
 	void Update() override;
 	void Render() override;
 	bool IsDead() override;
+	float GetRadius() override;
+	D3DXVECTOR2 GetPosition() override;
+	bool Hit() override;
 
 	float posX;
 	float posY;

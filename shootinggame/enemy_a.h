@@ -19,6 +19,9 @@ public:
 	void Update() override;
 	void Render() override;
 	bool IsDead() override;
+	float GetRadius() override;
+	D3DXVECTOR2 GetPosition() override;
+	bool Hit(float damage) override;
 
 	void UpdateMoveToPoint();
 	void UpdateChooseDirection();
@@ -29,6 +32,12 @@ public:
 	float velX;
 	float velY;
 	bool isDead;
+
+	float hp;
+
+	float damage;
+
+	float hitTimer;
 
 	State state;
 };

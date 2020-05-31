@@ -5,6 +5,10 @@ EnemyA::EnemyA()
 {
 	isDead = false;
 
+	hp = 4;
+
+	hitTimer = 0;
+
 	state = kInit;
 
 	const int centerX = WINDOW_WIDTH / 2;
@@ -54,14 +58,47 @@ void EnemyA::Render()
 	srcRect.right = 40;
 
 	D3DXVECTOR3 pos(posX - 20, posY- 35, 0);
-	enemyA->sprite->Draw(enemyA->texture, &srcRect, nullptr, &pos, D3DCOLOR_XRGB(255, 255, 255));
 
+	if (hitTimer > 0)
+	{
+		enemyA->sprite->Draw(enemyA->texture, &srcRect, nullptr, &pos, D3DCOLOR_XRGB(255, 0, 0));
+		hitTimer -= 1;
+	}
+	else
+	{
+		enemyA->sprite->Draw(enemyA->texture, &srcRect, nullptr, &pos, D3DCOLOR_XRGB(255, 255, 255));
+	}
 	enemyA->sprite->End();
 }
 
 bool EnemyA::IsDead()
 {
 	return isDead;
+}
+
+float EnemyA::GetRadius()
+{
+	return 20.0f;
+}
+
+D3DXVECTOR2 EnemyA::GetPosition()
+{
+	return D3DXVECTOR2(posX, posY);
+}
+
+bool EnemyA::Hit(float damage)
+{
+	if (!isDead)
+	{
+		hp -= damage;
+		hitTimer = 2;
+		
+		if (hp <= 0)
+		{
+			isDead = true;
+		}
+		return isDead;
+	}
 }
 
 void EnemyA::UpdateMoveToPoint()

@@ -46,3 +46,23 @@ bool PlayerBulletSpread::IsDead()
 {
     return isDead;
 }
+
+float PlayerBulletSpread::GetRadius()
+{
+    return 6.0f;
+}
+
+D3DXVECTOR2 PlayerBulletSpread::GetPosition()
+{
+    return D3DXVECTOR2(posX, posY);
+}
+
+bool PlayerBulletSpread::Hit()
+{
+    if (!isDead)
+    {
+        isDead = true;
+    }
+    return isDead;
+
+}
