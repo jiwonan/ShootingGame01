@@ -128,6 +128,9 @@
     <ClCompile Include="game_stat.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="boss_a.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="shootinggame.rc">

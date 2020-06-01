@@ -5,13 +5,13 @@
 class BossA : public Enemy
 {
 public:
-
-	void Update() = 0;
-	void Render() = 0;
-	bool IsDead() = 0;
-	float GetRadius() = 0;
-	D3DXVECTOR2 GetPosition() = 0;
-	void Hit(float damage) = 0;
+	BossA();
+	void Update();
+	void Render();
+	bool IsDead();
+	float GetRadius();
+	D3DXVECTOR2 GetPosition();
+	void Hit(float damage);
 
 	int hp;
 
@@ -21,5 +21,8 @@ public:
 	float posY;
 	float velX;
 	float velY;
+
+	float hitTimer;
+	float floatingTimer;
 
 };

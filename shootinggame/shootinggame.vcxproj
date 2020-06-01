@@ -176,6 +176,7 @@
     <ClInclude Include="title_stage.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="boss_a.cpp" />
     <ClCompile Include="enemy_a.cpp" />
     <ClCompile Include="enemy_explosion_a.cpp" />
     <ClCompile Include="game_background.cpp" />
