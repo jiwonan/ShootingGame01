@@ -98,6 +98,14 @@ void Player::HitByEnemyBody()
     hp--;
     if (hp > 0)
     {
+        if (gameStat.gameScore - 100 > 0)
+        {
+            gameStat.gameScore -= 100;
+        }
+        else
+        {
+            gameStat.gameScore = 0;
+        }
         enableInvincible = true;
         invincibleTime = 3;
     }

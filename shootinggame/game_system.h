@@ -8,6 +8,7 @@ class Bullet;
 class Enemy;
 class Player;
 class SpriteEffect;
+class GameStat;
 
 class GameSystem
 {

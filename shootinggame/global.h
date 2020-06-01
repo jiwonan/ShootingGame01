@@ -6,6 +6,7 @@
 #include "input_manager.h"
 #include "stage_manager.h"
 #include "game_system.h"
+#include "game_stat.h"
 
 #define WINDOW_WIDTH 640
 #define WINDOW_HEIGHT 480
@@ -29,3 +30,4 @@ extern TextureManager textureManager;
 extern InputManager inputManager;
 extern StageManager stageManager;
 extern GameSystem gameSystem;
+extern GameStat gameStat;

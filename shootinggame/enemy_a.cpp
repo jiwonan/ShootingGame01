@@ -95,6 +95,7 @@ void EnemyA::Hit(float damage)
 		
 		if (hp <= 0)
 		{
+			gameStat.gameScore += 100;
 			isDead = true;
 			gameSystem.GenerateEnemyExplosionA(posX, posY);
 		}

@@ -9,7 +9,7 @@
 
 GameSystem::GameSystem()
 {
-
+	gameStat.gameScore = 0;
 }
 
 void GameSystem::ClearAll()

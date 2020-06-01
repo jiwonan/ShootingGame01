@@ -81,6 +81,9 @@
     <ClInclude Include="sprite_effect.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="game_stat.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="shootinggame.cpp">
@@ -117,6 +120,9 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="enemy_explosion_a.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="game_stat.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
