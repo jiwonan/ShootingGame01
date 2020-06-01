@@ -151,6 +151,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="animation_frame.h" />
+    <ClInclude Include="boss_a.h" />
     <ClInclude Include="Bullet.h" />
     <ClInclude Include="enemy.h" />
     <ClInclude Include="enemy_a.h" />

@@ -84,6 +84,9 @@
     <ClInclude Include="game_stat.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="boss_a.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="shootinggame.cpp">

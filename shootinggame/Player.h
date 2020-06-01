@@ -11,7 +11,7 @@ public:
 	D3DXVECTOR2 GetPosition();
 	float GetRadius();
 
-	void HitByEnemyBody();
+	void HitByEnemyBody(int damage);
 
 	float playerX;
 	float playerY;

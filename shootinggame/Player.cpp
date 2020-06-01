@@ -7,7 +7,7 @@ Player::Player()
     playerY = WINDOW_HEIGHT * 0.8f;
     speed = 300;
 
-    hp = 3;
+    hp = 100;
     enableInvincible = false;
 }
 
@@ -93,9 +93,9 @@ float Player::GetRadius()
     return 16.0f;
 }
 
-void Player::HitByEnemyBody()
+void Player::HitByEnemyBody(int damage)
 {
-    hp--;
+    hp -= damage;
     if (hp > 0)
     {
         if (gameStat.gameScore - 100 > 0)

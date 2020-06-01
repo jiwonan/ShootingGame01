@@ -134,7 +134,7 @@ void GameSystem::Update()
 
 			if (Result)
 			{
-				player->HitByEnemyBody();
+				player->HitByEnemyBody(30);
 				currentEnemy->Hit(9999);
 				break;
 			}

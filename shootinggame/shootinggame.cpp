@@ -30,6 +30,7 @@ TextureManager textureManager;
 InputManager inputManager;
 StageManager stageManager;
 GameSystem gameSystem;
+GameStat gameStat;
 
 DWORD prevTime;
 
