@@ -5,6 +5,7 @@
 #include "math_util.h"
 #include "Player.h"
 #include "enemy_explosion_a.h"
+#include "boss_a.h"
 
 
 GameSystem::GameSystem()
@@ -17,6 +18,11 @@ void GameSystem::ClearAll()
 	bullets.clear();
 	enemies.clear();
 	effects.clear();
+}
+
+void GameSystem::GameStartLevelOne()
+{
+	GenerateEnemyBossA();
 }
 
 void GameSystem::GeneratePlayerBulletSpread(int x, int y)
@@ -45,6 +51,12 @@ void GameSystem::GenerateEnemyExplosionA(float x, float y)
 {
 	EnemyExplosionA* newEffect = new EnemyExplosionA(x, y);
 	effects.push_back(newEffect);
+}
+
+void GameSystem::GenerateEnemyBossA()
+{
+	Enemy* bossA = new BossA();
+	enemies.push_back(bossA);
 }
 
 void GameSystem::Update()
@@ -156,6 +168,7 @@ void GameSystem::Update()
 			iter++;
 		}
 	}
+
 }
 void GameSystem::Render()
 {

@@ -28,7 +28,7 @@ void BossA::Update()
 
 void BossA::Render()
 {
-	TextureElement* bossA = textureManager.GetTexture(2003);
+	TextureElement* bossA = textureManager.GetTexture(GAME_ENEMY_BOSS_A_BODY);
 
 	// Rendering of scene objects can happen here
 	bossA->sprite->Begin(D3DXSPRITE_ALPHABLEND);
@@ -36,8 +36,8 @@ void BossA::Render()
 	RECT srcRect;
 	srcRect.left = 0;
 	srcRect.top = 0;
-	srcRect.bottom = 327;
-	srcRect.right = 163;
+	srcRect.bottom = 163;
+	srcRect.right = 327;
 
 	D3DXVECTOR3 pos(posX - 327 / 2, posY - 163 / 2, 0);
 

@@ -19,12 +19,14 @@ public:
 	vector<SpriteEffect*> effects;
 
 	GameSystem();
-
 	void ClearAll();
+
+	void GameStartLevelOne();
 
 	void GeneratePlayerBulletSpread(int x, int y);
 	void GenerateEnemyA();
 	void GenerateEnemyExplosionA(float x, float y);
+	void GenerateEnemyBossA();
 
 	void Update();
 	void Render();

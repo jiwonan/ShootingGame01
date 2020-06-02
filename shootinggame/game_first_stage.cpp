@@ -7,6 +7,7 @@ GameFirstStage::GameFirstStage()
     gameSystem.player = &player;
 
     gameSystem.ClearAll();
+    gameSystem.GameStartLevelOne();
 }
 void GameFirstStage::Update()
 {
