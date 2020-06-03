@@ -46,7 +46,7 @@ void EnemyA::Update()
 
 void EnemyA::Render()
 {
-	TextureElement* enemyA = textureManager.GetTexture(2003);
+	TextureElement* enemyA = textureManager.GetTexture(GAME_ENEMY_A_BODY);
 
 	// Rendering of scene objects can happen here
 	enemyA->sprite->Begin(D3DXSPRITE_ALPHABLEND);

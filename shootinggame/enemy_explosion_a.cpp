@@ -47,7 +47,7 @@ void EnemyExplosionA::Update()
 
 void EnemyExplosionA::Render()
 {
-	TextureElement* explosionA = textureManager.GetTexture(2005);
+	TextureElement* explosionA = textureManager.GetTexture(GAME_ENEMY_EXPLOSION_A);
 
 	// Rendering of scene objects can happen here
 	explosionA->sprite->Begin(D3DXSPRITE_ALPHABLEND);

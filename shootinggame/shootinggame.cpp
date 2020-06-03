@@ -70,11 +70,11 @@ void InitMyStuff()
     textureManager.LoadTexture(L"player1.png", GAME_PLAYER_BODY);
     textureManager.LoadTexture(L"player_bullet_1.png", GAME_PLAYER_BULLET_1);
 
-    textureManager.LoadTexture(L"enemy_a.png", 2003);
-    textureManager.LoadTexture(L"explosion.png", 2005);
+    textureManager.LoadTexture(L"enemy_a.png", GAME_ENEMY_A_BODY);
+    textureManager.LoadTexture(L"explosion.png", GAME_ENEMY_EXPLOSION_A);
 
     textureManager.LoadTexture(L"boss_a.png", GAME_ENEMY_BOSS_A_BODY);
-
+    textureManager.LoadTexture(L"boss_bullt_a.png", GAME_ENEMY_BOSS_A_BULLET_1);
 
     stageManager.MakeTitleStage();
 

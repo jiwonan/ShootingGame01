@@ -23,7 +23,7 @@ void BossA::Update()
 {
 	posY = 100 + cosf(floatingTimer * 3) * 5;
 	floatingTimer += deltaTime;
-
+		
 }
 
 void BossA::Render()
