@@ -1,5 +1,6 @@
 #include "boss_a.h"
 #include "global.h"
+#include "game_system.h"
 
 BossA::BossA()
 {
@@ -23,6 +24,26 @@ void BossA::Update()
 {
 	posY = 100 + cosf(floatingTimer * 3) * 5;
 	floatingTimer += deltaTime;
+
+	if (posX > 0 || posX > WINDOW_WIDTH ||
+		posY > WINDOW_HEIGHT)
+	{
+		isDead = true;
+	}
+
+	if (rand() % 100 < 20)
+	{
+		float vx = rand() % 20 - 10;
+		float vy = rand() % 20 - 10;
+		float d = sqrt(vx * vx + vy * vy);
+
+		vx = vx / d;
+		vy = vy / d;
+
+		float speed = 3;
+
+		// gameSystem.GenerateBossABullet(posX, posY, vx * speed, vy * speed);
+	}
 		
 }
 

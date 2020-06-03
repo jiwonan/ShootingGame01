@@ -12,7 +12,7 @@ public:
 	bool IsDead() override;
 	float GetRadius() override;
 	D3DXVECTOR2 GetPosition() override;
-	bool Hit() override;
+	void Hit() override;
 
 	float posX;
 	float posY;

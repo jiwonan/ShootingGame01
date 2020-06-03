@@ -152,6 +152,7 @@
   <ItemGroup>
     <ClInclude Include="animation_frame.h" />
     <ClInclude Include="boss_a.h" />
+    <ClInclude Include="boss_bullet_a.h" />
     <ClInclude Include="Bullet.h" />
     <ClInclude Include="enemy.h" />
     <ClInclude Include="enemy_a.h" />
@@ -177,6 +178,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="boss_a.cpp" />
+    <ClCompile Include="boss_bullet_a.cpp" />
     <ClCompile Include="enemy_a.cpp" />
     <ClCompile Include="enemy_explosion_a.cpp" />
     <ClCompile Include="game_background.cpp" />

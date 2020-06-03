@@ -15,6 +15,7 @@ class GameSystem
 public:
 	Player* player;
 	vector<Bullet*> bullets;
+	vector<Bullet*> enemyBullets;
 	vector<Enemy*> enemies;
 	vector<SpriteEffect*> effects;
 
@@ -27,6 +28,7 @@ public:
 	void GenerateEnemyA();
 	void GenerateEnemyExplosionA(float x, float y);
 	void GenerateEnemyBossA();
+	void GenerateBossABullet(float x, float y, float vx, float vy);
 
 	void Update();
 	void Render();

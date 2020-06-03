@@ -6,6 +6,7 @@
 #include "Player.h"
 #include "enemy_explosion_a.h"
 #include "boss_a.h"
+#include "boss_bullet_a.h"
 
 
 GameSystem::GameSystem()
@@ -59,6 +60,13 @@ void GameSystem::GenerateEnemyBossA()
 	enemies.push_back(bossA);
 }
 
+void GameSystem::GenerateBossABullet(float x, float y, float vx, float vy)
+{
+	BossBulletA* bossABullet = new BossBulletA(x, y, vx, vy);
+	enemyBullets.push_back(bossABullet);
+}
+
+
 void GameSystem::Update()
 {
 	enemyATime += deltaTime;
@@ -79,6 +87,21 @@ void GameSystem::Update()
 		if ((*iter)->IsDead())
 		{
 			iter = bullets.erase(iter);
+		}
+		else
+		{
+			iter++;
+		}
+	}
+
+	// 적 총알 업데이트
+	for (auto iter = enemyBullets.begin(); iter != enemyBullets.end(); )
+	{
+		(*iter)->Update();
+
+		if ((*iter)->IsDead())
+		{
+			iter = enemyBullets.erase(iter);
 		}
 		else
 		{
@@ -170,6 +193,7 @@ void GameSystem::Update()
 		}
 	}
 
+
 }
 void GameSystem::Render()
 {
@@ -185,5 +209,9 @@ void GameSystem::Render()
 	for (int i = 0; i < effects.size(); ++i)
 	{
 		effects[i]->Render();
+	}
+	for (int i = 0; i < enemyBullets.size(); ++i)
+	{
+		enemyBullets[i]->Render();
 	}
 }

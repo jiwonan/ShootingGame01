@@ -57,12 +57,8 @@ D3DXVECTOR2 PlayerBulletSpread::GetPosition()
     return D3DXVECTOR2(posX, posY);
 }
 
-bool PlayerBulletSpread::Hit()
+void PlayerBulletSpread::Hit()
 {
-    if (!isDead)
-    {
-        isDead = true;
-    }
-    return isDead;
+    isDead = true;
 
 }
