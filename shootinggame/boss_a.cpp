@@ -21,7 +21,7 @@ BossA::BossA()
 
 void BossA::Update()
 {
-	posY = cosf(floatingTimer * 3) * 5;
+	posY = 100 + cosf(floatingTimer * 3) * 5;
 	floatingTimer += deltaTime;
 
 }
@@ -40,16 +40,17 @@ void BossA::Render()
 	srcRect.right = 327;
 
 	D3DXVECTOR3 pos(posX - 327 / 2, posY - 163 / 2, 0);
+	D3DCOLOR spriteColor = D3DCOLOR_XRGB(255, 255, 255);
 
 	if (hitTimer > 0)
 	{
-		bossA->sprite->Draw(bossA->texture, &srcRect, nullptr, &pos, D3DCOLOR_XRGB(255, 0, 0));
+		spriteColor = D3DCOLOR_XRGB(255, 0, 0);
 		hitTimer -= 1;
 	}
-	else
-	{
-		bossA->sprite->Draw(bossA->texture, &srcRect, nullptr, &pos, D3DCOLOR_XRGB(255, 255, 255));
-	}
+	
+	bossA->sprite->Draw(bossA->texture, &srcRect, nullptr, &pos, spriteColor);
+
+
 	bossA->sprite->End();
 }
 
@@ -60,7 +61,7 @@ bool BossA::IsDead()
 
 float BossA::GetRadius()
 {
-	return 150.0f;
+	return 81.0f;
 }
 
 D3DXVECTOR2 BossA::GetPosition()

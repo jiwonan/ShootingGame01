@@ -155,6 +155,7 @@ void GameSystem::Update()
 		iter++;
 	}
 
+	// 이펙트 업데이트
 	for (auto iter = effects.begin(); iter != effects.end(); )
 	{
 		(*iter)->Update();
