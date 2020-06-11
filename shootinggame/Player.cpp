@@ -88,6 +88,7 @@ D3DXVECTOR2 Player::GetPosition()
     return D3DXVECTOR2(playerX,playerY);
 }
 
+
 float Player::GetRadius()
 {
     return 16.0f;
@@ -106,6 +107,30 @@ void Player::HitByEnemyBody(int damage)
         {
             gameStat.gameScore = 0;
         }
+        enableInvincible = true;
+        invincibleTime = 3;
+    }
+    else
+    {
+        hp = 0;
+        stageManager.MakeTitleStage();
+    }
+}
+
+void Player::HitByBossBullet(int damage)
+{
+    hp -= damage;
+    if (hp > 0)
+    {
+        if (gameStat.gameScore - 100 > 0)
+        {
+            gameStat.gameScore -= 100;
+        }
+        else
+        {
+            gameStat.gameScore = 0;
+        }
+
         enableInvincible = true;
         invincibleTime = 3;
     }

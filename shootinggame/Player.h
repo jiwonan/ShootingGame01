@@ -12,6 +12,7 @@ public:
 	float GetRadius();
 
 	void HitByEnemyBody(int damage);
+	void HitByBossBullet(int damage);
 
 	float playerX;
 	float playerY;

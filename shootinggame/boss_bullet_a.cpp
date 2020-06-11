@@ -15,7 +15,7 @@ BossBulletA::BossBulletA(float x, float y, float vx, float vy)
 void BossBulletA::Update()
 {
 	posX += velX;
-	posY += posY;
+	posY += velY;
 
 	if (posX<0 || posX>WINDOW_WIDTH ||
 		posY<0 || posY>WINDOW_HEIGHT)

@@ -56,7 +56,7 @@ void GameSystem::GenerateEnemyExplosionA(float x, float y)
 
 void GameSystem::GenerateEnemyBossA()
 {
-	Enemy* bossA = new BossA();
+	BossA* bossA = new BossA();
 	enemies.push_back(bossA);
 }
 
@@ -94,14 +94,12 @@ void GameSystem::Update()
 		}
 	}
 
-	// 적 총알 업데이트
-	for (auto iter = enemyBullets.begin(); iter != enemyBullets.end(); )
+	for (auto iter = enemies.begin(); iter != enemies.end(); )
 	{
 		(*iter)->Update();
-
 		if ((*iter)->IsDead())
 		{
-			iter = enemyBullets.erase(iter);
+			iter = enemies.erase(iter);
 		}
 		else
 		{
@@ -109,13 +107,32 @@ void GameSystem::Update()
 		}
 	}
 
-	// 적 업데이트
-	for (auto iter = enemies.begin(); iter != enemies.end(); )
+	// 적 총알 업데이트
+	for (auto iter = enemyBullets.begin(); iter != enemyBullets.end(); )
 	{
 		(*iter)->Update();
+
+		if (!player->enableInvincible)
+		{
+			D3DXVECTOR2 enemyBulletPos = (*iter)->GetPosition();
+			float enemyBulletR = (*iter)->GetRadius();
+
+			D3DXVECTOR2 PlayerPos = player->GetPosition();
+			float PlayerR = player->GetRadius();
+
+			bool result = isCircleCollided(enemyBulletPos.x, enemyBulletPos.y, enemyBulletR,
+				PlayerPos.x, PlayerPos.y, PlayerR);
+
+			if (result)
+			{
+				(*iter)->Hit();
+				player->HitByBossBullet(20);
+			}
+		}
+
 		if ((*iter)->IsDead())
 		{
-			iter = enemies.erase(iter);
+			iter = enemyBullets.erase(iter);
 		}
 		else
 		{
@@ -192,8 +209,6 @@ void GameSystem::Update()
 			iter++;
 		}
 	}
-
-
 }
 void GameSystem::Render()
 {

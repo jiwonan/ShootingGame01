@@ -25,7 +25,7 @@ void BossA::Update()
 	posY = 100 + cosf(floatingTimer * 3) * 5;
 	floatingTimer += deltaTime;
 
-	if (posX > 0 || posX > WINDOW_WIDTH ||
+	if (posX < 0 || posX > WINDOW_WIDTH ||
 		posY > WINDOW_HEIGHT)
 	{
 		isDead = true;
@@ -42,7 +42,7 @@ void BossA::Update()
 
 		float speed = 3;
 
-		// gameSystem.GenerateBossABullet(posX, posY, vx * speed, vy * speed);
+		gameSystem.GenerateBossABullet(posX, posY, vx * speed, vy * speed);
 	}
 		
 }
